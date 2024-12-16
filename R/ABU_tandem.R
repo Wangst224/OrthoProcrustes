@@ -1,3 +1,22 @@
+#' Orthogonal Procrustes Problem
+#'
+#' Orthogonal but not necessarily orthonormal Procrustes problem. Numerically solved using tandem algorithm through conjugate gradient.
+#'
+#' @details This functions solves the orthogonal Procrustes problem.
+#' Given matrices A and B, the orthogonal procrustes seeks a matrix U, which has orthogonal columns (U'U = D^2), such that ||A - B U||^2 is minimized.
+#' The solution is found by a tandem algorithm using conjugate gradient method.
+#' The current implementation assumes that the diagonal matrix D is known.
+#'
+#' @param A An m by p matrix. The target matrix.
+#' @param B An m by p matrix. The matrix to be aligned.
+#' @param d A vector of length p. The diagonal matrix D.
+#'
+#' @return TBD
+#'
+#' @export
+#'
+#' @examples
+#' ABU_tandem(A, B, d)
 ABU_tandem = function(A, B, d, tol = 1e-6, max_iter = 1000) {
     # Given matrices A and B, find the V with orthonormal columns and d that minimize
     # rho = ||A - B V diag(d) ||^2
