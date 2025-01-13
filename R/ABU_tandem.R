@@ -50,10 +50,11 @@ ABU_tandem = function(A, B, d, tol = 1e-6, max_iter = 1000) {
 
     # For fixed V, find d through differentiation. Not implemented yet.
     # Therefore there is no iteration in this function now.
-    d = rep(1, p)
 
     # For fixed d, find V through conjugate gradient method.
     cg_res = conjugate_gradient(theta_init, A, B, V_init, d, tol, max_iter)
 
-    #return(V)
+    if (cg$res != 0) warning("Conjugate gradient did not converge")
+
+    return(cg_res)
 }
